@@ -4,17 +4,17 @@
 
 -- Initialization function for this job file.
 function get_sets()
-    mote_include_version = 2
+    	mote_include_version = 2
 
 	-- Load and initialize the include file.
 	include('Mote-Include.lua')
 	include('organizer-lib.lua') 
-    include('no_interruptions.lua')	
+   	include('no_interruptions.lua')	
 	
 	rangedDelay = 600
-    cast_speed = 1.0
-    holdMovement = 0
-    require('string')
+    	cast_speed = 1.0
+   	holdMovement = 0
+   	require('string')
 	
 end
 
@@ -41,27 +41,27 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function user_setup()
-    state.OffenseMode:options('DTParry','Hybrid','MEva')
-    state.WeaponskillMode:options('Normal', 'Acc')
-    state.PhysicalDefenseMode:options('DT', 'Resist')
-    state.IdleMode:options('HPDT','VITDefense', 'Refresh', 'Phalanx')
-	state.CastingMode:options('Normal', 'sird')
-	state.Buff['Aftermath: Lv.3'] = buffactive['Aftermath: Lv.3'] or false
+   	 state.OffenseMode:options('DTParry','Hybrid','MEva')
+   	 state.WeaponskillMode:options('Normal', 'Acc')
+   	 state.PhysicalDefenseMode:options('DT', 'Resist')
+   	 state.IdleMode:options('HPDT','VITDefense', 'Refresh', 'Phalanx')
+	 state.CastingMode:options('Normal', 'sird')
+	 state.Buff['Aftermath: Lv.3'] = buffactive['Aftermath: Lv.3'] or false
 	
-	state.WeaponSet = M{['description']='Weapon Set', 'Epeolatry', 'GreatAxe'}
-	state.WeaponLock = M(false, 'Weapon Lock')
+	 state.WeaponSet = M{['description']='Weapon Set', 'Epeolatry', 'GreatAxe'}
+	 state.WeaponLock = M(false, 'Weapon Lock')
 	
-	send_command('bind numpad6 gs c cycle WeaponSet')
-    send_command('bind numpad4 gs c cycle WeaponLock')
+	 send_command('bind numpad6 gs c cycle WeaponSet')
+         send_command('bind numpad4 gs c cycle WeaponLock')
 
-	select_default_macro_book(1,20)
+	 select_default_macro_book(1,20)
 end
 
 
 function init_gear_sets()
 	sets.Epeolatry = {main="Epeolatry", sub="Utu Grip"}
-    sets.GreatAxe = {main="Lycurgos", sub="Utu Grip"}
-    sets.Lionheart = {main="Lionheart", sub="Utu Grip"}
+    	sets.GreatAxe = {main="Lycurgos", sub="Utu Grip"}
+    	sets.Lionheart = {main="Lionheart", sub="Utu Grip"}
 
     sets.enmity = {
 		ammo="Sapience Orb",
@@ -80,7 +80,7 @@ function init_gear_sets()
 		
 	sets.EnhancingSkill = {
 		ammo="Staunch Tathlum +1",
-		head="Erilaz Galea +2",
+		head="Erilaz Galea +3",
 		body={name="Runeist Coat +3", priority=2},
 		hands="Runeist Mitons +3",
 		legs={ name="Carmine Cuisses +1", augments={'Accuracy+12','DEX+12','MND+20',}},
@@ -95,7 +95,7 @@ function init_gear_sets()
 		
 	sets.Sird = {
 		ammo="Staunch Tathlum +1",
-		head="Erilaz Galea +2",
+		head="Erilaz Galea +3",
 		body={ name="Taeon Tabard", augments={'Accuracy+22','Spell interruption rate down -10%','Phalanx +3',}},
 		hands="Rawhide Gloves",
 		legs={ name="Carmine Cuisses +1", augments={'Accuracy+12','DEX+12','MND+20',}},
@@ -234,7 +234,7 @@ function init_gear_sets()
     sets.precast.JA['Embolden'] = {back="Evasionist's Cape"}
 	
     sets.precast.JA['Vivacious Pulse'] = set_combine(sets.enmity, {
-		head="Erilaz Galea +2", 
+		head="Erilaz Galea +3", 
 		legs="Runeist Trousers +3",
 		back={name="Moonlight Cape", priority=3},
 		ring1="Defending Ring", 
@@ -284,7 +284,7 @@ function init_gear_sets()
 		back={name="Moonlight Cape", priority=1},
 		ring2={name="Moonlight Ring", priority=2},
 		waist="Siegel Sash", 
-		head="Erilaz Galea +2",
+		head="Erilaz Galea +3",
 		legs="Futhark Trousers +3"})
 
 	sets.precast.FC['Ninjitsu Magic'] = set_combine(sets.precast.FC, {
@@ -519,7 +519,7 @@ function init_gear_sets()
 		
 	sets.precast.WS['Armor Break'] = {
 		ammo="Yamarang",
-		head="Erilaz Galea +2",
+		head="Erilaz Galea +3",
 		body="Erilaz Surcoat +2",
 		hands="Nyame Gauntlets",
 		legs="Eri. Leg Guards +3",	
@@ -643,7 +643,7 @@ function init_gear_sets()
 	
     sets.midcast.FastRecast = {}
     sets.midcast['Enhancing Magic'] = {
-		head="Erilaz Galea +2", 
+		head="Erilaz Galea +3", 
 		ear1="Etiolation Earring", 
 		right_ear={ name="Odnowa Earring +1", priority=1},
 		hands="Regal Gauntlets", 
@@ -695,11 +695,11 @@ function init_gear_sets()
 	sets.midcast['Stun'].Macc = sets.midcast['Blind']	
 	
 	sets.midcast['Foil'] = set_combine(sets.enmity, {
-		head="Erilaz Galea +2",})
+		head="Erilaz Galea +3",})
 		
 	sets.midcast['Blind'] = {
 		ammo="Pemphredo Tathlum",
-		head="Erilaz Galea +2",
+		head="Erilaz Galea +3",
 		body="Erilaz Surcoat +2",
 		hands="Agwu's Gages",
 		legs="Eri. Leg Guards +3",
@@ -714,14 +714,14 @@ function init_gear_sets()
 		
 	sets.midcast['Refresh'] = {
 		body={ name="Nyame Mail", augments={'Path: B',}},		
-		head="Erilaz Galea +2", 
+		head="Erilaz Galea +3", 
 		legs="Futhark Trousers +3", 
 		hands="Regal Gauntlets", 
 		waist="Gishdubar Sash"}
     
 	sets.midcast['Temper'] = {
 		ammo="Staunch Tathlum +1",
-		head="Erilaz Galea +2",
+		head="Erilaz Galea +3",
 		body={name="Runeist Coat +3", priority=3},
 		hands="Runeist Mitons +3",
 		legs={ name="Carmine Cuisses +1", augments={'Accuracy+12','DEX+12','MND+20',}},
