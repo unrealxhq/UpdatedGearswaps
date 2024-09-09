@@ -9,12 +9,7 @@ function get_sets()
 	-- Load and initialize the include file.
 	include('Mote-Include.lua')
 	include('organizer-lib.lua') 
-   	include('no_interruptions.lua')	
-	
-	rangedDelay = 600
-    	cast_speed = 1.0
-   	holdMovement = 0
-   	require('string')
+
 	
 end
 
@@ -1067,12 +1062,12 @@ function job_buff_change(buff, gain)
 
     if buff == "Embolden" then
 		if gain then
-			add_to_chat(158,'[Embolden] ON -- Back Locked')
+			add_to_chat(158,'Embolden ON')
 			equip({back="Evasionist's Cape"})
             disable('back')
 		else
 			enable('back')
-			add_to_chat(123,'[Embolden] OFF -- Back Unlocked')
+			add_to_chat(123,'Embolden OFF')
 		end
 	end
 	
@@ -1087,19 +1082,6 @@ end
 
 function job_precast(spell, action, spellMap, eventArgs)
     currentCast = spell.english
-    if spell.type == 'Misc' then
-        holdMovement = os.clock() + math.ceil((rangedDelay/106)*cast_speed)
-    elseif spell.type == 'Item' then
-        holdMovement = 0
-    elseif spell.type == 'JobAbility' or spell.type == 'PetCommand' or spell.type == 'Scholar' or spell.cast_time == nil then
-        holdMovement = 0
-    else
-        if spell.english == 'Stoneskin' then
-            holdMovement = os.clock() + math.ceil((10*cast_speed))
-        else
-            holdMovement = os.clock() + math.ceil(((spell.cast_time)*cast_speed))
-        end
-    end
     equip(sets[state.WeaponSet.current])
     
 	if spell.type == 'WeaponSkill' and player.target.distance > (3.4 + player.target.model_size) then 
