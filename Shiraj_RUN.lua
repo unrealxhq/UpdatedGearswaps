@@ -3,8 +3,48 @@
 --OffenseMode = F9. Weaponskill Mode = Windows Key + F9. Idle mode = CTRL + F12. Casting Mode = CTRL + F11. 
 
 --[[
-	To optimise:
+	Enmity values of my Enmity set with no weapon + Crusade.:
+Spells:
 	
+Flash - 2585 VE | 363 CE
+
+Foil - 880 VE | 646 CE
+
+Stun - 1280 VE | 180 CE
+
+Blank Gaze - 646 VE | 646 CE
+
+Jettatura - 2060 VE | 180 CE
+
+Geist Wall - 646 VE | 646 CE
+
+Soporific - 646 VE | 646 CE
+
+Sheep Song - 646 VE | 646 CE
+
+Stinking Gas - 646 VE | 646 CE
+---------------------------------
+JAs:
+
+Vallation - 1818 VE | 909 CE
+
+Valiance - 1818 VE | 909 CE
+
+Swordplay - 646 VE | 323 CE
+
+Pflug - 1818 VE | 909 CE
+
+Gambit 2585 VE | 1292 CE
+
+Rayke 2545 VE | 1292 CE
+
+Liement - 1818 VE | 909 CE - x6 = 10908 VE | 5454 CE
+
+Battuta - 1818 VE | 909 CE
+
+One for All - 646 VE | 323 CE
+
+Elemental Sforzo - 14544 VE | 3636 CE	
 ]]
 
 -- Initialization function for this job file.
@@ -34,20 +74,20 @@ function job_setup()
 	
 	lockstyleset = 20
 end	
-------------------------------------------------------------------------------------------------------------
-------- User setup functions for this job.  Recommend that these be overridden in a sidecar file.	-------
-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------- User setup functions for this job.  Recommend that these be overridden in a sidecar file.
+--------------------------------------------------------------------------------------------
 function user_setup()
-    state.OffenseMode:options('TP','DTParry','MEva')
+    state.OffenseMode:options('TP','DTParry','Hybrid','MEva','Evasion')
     state.WeaponskillMode:options('Normal', 'DT', 'Acc' ,'CappedAttack')
     state.PhysicalDefenseMode:options('DT', 'Resist')
-    state.IdleMode:options('HPDT','VITDefense', 'Refresh', 'Phalanx')
+    state.IdleMode:options('HPDT','VITDefense','Aminon', 'Refresh', 'Phalanx')
 	state.CastingMode:options('Normal', 'sird')
 	state.Buff['Aftermath: Lv.3'] = buffactive['Aftermath: Lv.3'] or false
 	
 	state.WeaponSet = M{['description']='Weapon Set', 'Epeolatry', 'Lionheart','Lycurgos'}
 	state.WeaponLock = M(false, 'Weapon Lock')
 	
+	send_command('bind home input /ja "Accession" <me>')
 	send_command('bind delete input /item Panacea <me>')
     send_command('bind end input /item Remedy <me>')
     send_command('bind pagedown input /item "Holy Water" <me>')
@@ -90,37 +130,37 @@ function init_gear_sets()
 	sets.EnhancingSkill = {
 		ammo="Staunch Tathlum +1",
 		head="Erilaz Galea +3",
-		body={name="Nyame Mail", priority=3},
-		hands="Runeist Mitons +3",
+		body={name="Adamantite Armor", priority=3},
+		hands="Rune. Mitons +4",
 		legs={ name="Carmine Cuisses +1", augments={'Accuracy+12','DEX+12','MND+20',}},
 		feet="Erilaz Greaves +3",
-		neck="Enhancing Torque",
-		waist="Cascade Belt",
-		left_ear={name="Etiolation Earring", priority=1},
-		right_ear="Andoaa Earring",
+		neck="Melic Torque",
+		waist="Null Belt",
+		left_ear={name="Andoaa Earring", priority=1},
+		right_ear="Mimir Earring",
 		left_ring="Stikini Ring",
-		right_ring={name="Stikini left_ring", priority=2},
+		right_ring={name="Stikini Ring +1", priority=2},
 		back={name="Moonlight Cape", priority=4}}
 		
-	sets.Sird = {
+	sets.Sird = { -- 106% sird w/merits - 52% PDT/DT
 		ammo="Staunch Tathlum +1",
 		head="Erilaz Galea +3",
-		body={ name="Taeon Tabard", augments={'Accuracy+22','Spell interruption rate down -10%','Phalanx +3',}},
+		body={name="Adamantite Armor",priority=5},
 		hands="Rawhide Gloves",
 		legs={ name="Carmine Cuisses +1", augments={'Accuracy+12','DEX+12','MND+20',}},
-		feet={ name="Taeon Boots", augments={'Accuracy+17','Spell interruption rate down -10%','Crit. hit damage +3%',}},
+		feet="Agwu's Pigaches",
 		neck="Moonbeam Necklace",
-		waist={name="Plat. Mog. Belt", priority=3},
-		left_ear={ name="Tuisto Earring", priority=2},
-		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
-		left_ring="Defending Ring",
-		right_ring={ name="Gelatinous Ring +1", priority=1},
+		waist="Audumbla Sash",
+		left_ear={ name="Etiolation Earring", priority=1},
+		right_ear={ name="Odnowa Earring +1", priority=3},
+		left_ring={ name="Gelatinous Ring +1", priority=2},
+		right_ring={name="Moonlight Ring", priority=4},
 		back={ name="Ogma's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},}	
 		
     sets.Cures = { -- Capped DT, 3350~ HP, +70 enmity
 		ammo="Sapience Orb",
 		head="Null Masque",
-		body={name="Runeist Coat +3", priority=3},
+		body={name="Runeist Coat +4", priority=3},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
@@ -138,7 +178,7 @@ function init_gear_sets()
     sets.precast.JA['Vallation'] = { -- +73 enmity w/o weapon/crusade
 		ammo="Sapience Orb",
 		head="Halitus Helm",
-		body={name="Runeist Coat +3", priority=2},
+		body={name="Runeist Coat +4", priority=2},
 		hands="Kurys Gloves",
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
@@ -153,7 +193,7 @@ function init_gear_sets()
     sets.precast.JA['Valiance'] = { -- +73 enmity w/o weapon/crusade
 		ammo="Sapience Orb",
 		head="Halitus Helm",
-		body={name="Runeist Coat +3", priority=3},
+		body={name="Runeist Coat +4", priority=3},
 		hands="Kurys Gloves",
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
@@ -181,7 +221,7 @@ function init_gear_sets()
 		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},}
 			
     sets.precast.JA['Battuta'] = set_combine(sets.enmity, {
-		hands="Futhark Bandeau +3"})
+		hands="Futhark Bandeau +4"})
 	
     sets.precast.JA['Elemental Sforzo'] = { -- +76 Enmity w/o weapon/crusade
 		ammo="Sapience Orb",
@@ -217,9 +257,10 @@ function init_gear_sets()
 		ammo="Pemphredo Tathlum",
 		head={ name="Nyame Helm", augments={'Path: B',}},
 		body="Agwu's Robe",
-		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+		hands="Agwu's Gages",
+		--hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Agwu's Slops", augments={'Path: A',}},
-		feet={ name="Herculean Boots", augments={'"Resist Silence"+11','Accuracy+2','Magic burst dmg.+15%','Accuracy+12 Attack+12','Mag. Acc.+17 "Mag.Atk.Bns."+17',}},
+		feet="Agwu's Pigaches",
 		neck="Sibyl Scarf",
 		waist="Orpheus's Sash",
 		left_ear="Friomisi Earring",
@@ -227,11 +268,12 @@ function init_gear_sets()
 		left_ring="Defending Ring",
 		--left_ring="Mujin Band",
 		right_ring="Locus Ring",
-		back={ name="Ogma's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},}		
+		back={ name="Ogma's Cape", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},}	
+		
     sets.precast.JA['Swipe'] = sets.precast.JA['Lunge']
 	
     sets.precast.JA['Gambit'] = set_combine(sets.enmity, {
-		hands="Runeist Mitons +3"})
+		hands="Rune. Mitons +4"})
 	
     sets.precast.JA['Rayke'] = set_combine(sets.enmity,  {
 		feet="Futhark Boots +3"})
@@ -249,11 +291,11 @@ function init_gear_sets()
 		
     sets.precast.JA['One for All'] = {
 		ammo="Staunch Tathlum +1",
-		head="Erilaz Galea +3", 
-		body={name="Runeist Coat +3", priority=5},
+		head="Runeist Bandeau +4",
+		body={name="Runeist Coat +4", priority=5},
 		hands="Regal Gauntlets",
-		legs={ name="Nyame Flanchard", augments={'Path: B',}},
-		feet="Turms Leggings +1",
+		legs="Eri. Leg Guards +3",
+		feet="Erilaz Greaves +3",
 		neck={ name="Unmoving Collar +1", augments={'Path: A',}},
 		waist={name="Plat. Mog. Belt", priority=4},
 		left_ear={name="Tuisto Earring", priority=1},
@@ -273,26 +315,26 @@ function init_gear_sets()
 	-- Fast cast sets for spells
     sets.precast.FC = {
 		ammo="Sapience Orb",
-		head="Rune. Bandeau +3",
+		head="Runeist Bandeau +4",
 		body="Erilaz Surcoat +3",
 		hands={ name="Leyline Gloves", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
 		legs="Agwu's Slops",
 		feet={ name="Carmine Greaves", augments={'HP+60','MP+60','Phys. dmg. taken -3',}},
-		neck={ name="Futhark Torque +2", augments={'Path: A',}},
+		neck="Voltsurge Torque",
 		waist={name="Plat. Mog. Belt", priority=2},
 		left_ear="Etiolation Earring",
 		right_ear="Loquac. Earring",
 		left_ring="Kishar Ring",
 		right_ring={name="Moonlight Ring", priority=1},
 		back={ name="Ogma's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','"Fast Cast"+10',}},}		
-			-- Fast Cast: 55%  / 30% Inspiration
+			-- Fast Cast: 59%  / 30% Inspiration
 			
     sets.precast.FC['Enhancing Magic'] = set_combine(sets.precast.FC, {
 		back={name="Moonlight Cape", priority=2},
 		right_ring={name="Moonlight Ring", priority=1},
 		waist="Siegel Sash", 
 		head="Erilaz Galea +3",
-		legs="Futhark Trousers +3"})
+		legs="Futhark Trousers +4"})
 
 	sets.precast.FC['Ninjitsu Magic'] = set_combine(sets.precast.FC, {
 		neck="Magoraga Beads"})
@@ -317,11 +359,11 @@ function init_gear_sets()
 	
     sets.precast.WS['Resolution'] = {
 	    ammo="Crepuscular Pebble",
-		head="Adhemar Bonnet +1",
-		body={ name="Adhemar Jacket +1", augments={'STR+12','DEX+12','Attack+20',}},
+		head={ name="Nyame Helm", augments={'Path: B',}},
+		body={ name="Nyame Mail", augments={'Path: B',}},
 		hands={ name="Adhemar Wrist. +1", augments={'STR+12','DEX+12','Attack+20',}},
-		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-		feet={ name="Herculean Boots", augments={'Attack+5','Crit.hit rate+1','Quadruple Attack +3','Accuracy+10 Attack+10','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},		
+		legs={ name="Nyame Flanchard", augments={'Path: B',}},
+		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Fotia Gorget",
 		waist="Fotia Belt",
 		left_ear="Sherida Earring",
@@ -337,7 +379,7 @@ function init_gear_sets()
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
-		neck="Loricate Torque +1",
+		neck={name="Futhark Torque +2", priority=1},
 		waist="Engraved Belt",
 		left_ear={name="Tuisto Earring", priority=3},
 		right_ear={ name="Odnowa Earring +1", priority=1},
@@ -347,11 +389,11 @@ function init_gear_sets()
 		
     sets.precast.WS['Resolution'].Acc = set_combine(sets.precast.WS['Resolution'].Normal, {
 		ammo="Yamarang",
-		head="Erilaz Galea +3",
+		head="Adhemar Bonnet +1",
 		body={ name="Adhemar Jacket +1", augments={'STR+12','DEX+12','Attack+20',}},
-		hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+		hands="Erilaz Gauntlets +3",
 		legs="Eri. Leg Guards +3",
-		feet="Erilaz Greaves +3",
+		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Fotia Gorget",
 		waist="Fotia Belt",
 		left_ear="Sherida Earring",
@@ -384,19 +426,19 @@ function init_gear_sets()
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Rep. Plat. Medal",
 		waist="Sailfi Belt +1",
-		left_ear="Mache Earring +1",
+		left_ear="Sherida Earring",
 		right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
 		left_ring="Regal Ring",
-		right_ring="Ilabrat Ring",
+		right_ring="Epaminondas's Ring",
 		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}},}
 		
     sets.precast.WS['Dimidiation'].Acc = set_combine(sets.precast.WS['Dimidiation'], {
 		ammo="Yamarang",
-		head="Erilaz Galea +3",
+		head={ name="Nyame Helm", augments={'Path: B',}},
 		body="Nyame Mail",
 		hands="Erilaz Gauntlets +3",
-		legs="Eri. Leg Guards +3",
-		feet="Erilaz Greaves +3",
+		legs={ name="Nyame Flanchard", augments={'Path: B',}},
+		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Futhark Torque +2",
 		waist="Kentarch Belt +1",
 		left_ear="Mache Earring +1",
@@ -411,7 +453,7 @@ function init_gear_sets()
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
-		neck="Loricate Torque +1",
+		neck={name="Futhark Torque +2", priority=1},
 		waist={name="Plat. Mog. Belt", priority=1},
 		left_ear={name="Tuisto Earring", priority=3},
 		right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
@@ -419,35 +461,50 @@ function init_gear_sets()
 		right_ring={name="Moonlight Ring", priority=2},
 		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}},})
 		
-    sets.precast.WS['Herculean Slash'] = {
-		ammo="Staunch Tathlum +1",
+    sets.precast.WS['Dimidiation'].CappedAttack = {
+		ammo="Crepuscular Pebble",
 		head={ name="Nyame Helm", augments={'Path: B',}},
 		body={ name="Nyame Mail", augments={'Path: B',}},
+		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+		legs={ name="Nyame Flanchard", augments={'Path: B',}},
+		feet={ name="Nyame Sollerets", augments={'Path: B',}},
+		neck="Fotia Gorget",
+		waist="Sailfi Belt +1",
+		left_ear="Mache Earring +1",
+		right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
+		left_ring="Niqmaddu Ring",
+		right_ring="Epaminondas's Ring",
+		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}},}
+		
+    sets.precast.WS['Herculean Slash'] = {
+		ammo="Yamarang",
+		head="Erilaz Galea +3",
+		body="Erilaz Surcoat +3",
 		hands="Erilaz Gauntlets +3",
-		legs="Eri. Leg Guards +3",	
+		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
-		neck="Loricate Torque +1",
-		waist="Engraved Belt",
-		left_ear={name="Tuisto Earring", priority=2},
-		right_ear={ name="Odnowa Earring +1", priority=1},
-		left_ring="Paguroidea Ring",
-		right_ring={ name="Gelatinous Ring +1", priority=3},
-		back={ name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','DEF+50',}},}	
+		neck="Null Loop",
+		waist="Null Belt",
+		left_ear="Crep. Earring",
+		right_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
+		left_ring="Chirich Ring +1",
+		right_ring="Moonlight Ring",
+		back="Null Shawl",}
 		
 	sets.precast.WS['Shockwave'] = {
 		ammo="Yamarang",
 		head="Erilaz Galea +3",
 		body="Erilaz Surcoat +3",
 		hands="Erilaz Gauntlets +3",
-		legs="Eri. Leg Guards +3",	
+		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
-		neck="Futhark Torque +2",
-		waist="Kentarch Belt +1",
-		left_ear="Mache Earring +1",
-		right_ear={ name="Odnowa Earring +1", priority=1},
-		left_ring="Defending Ring",
+		neck="Null Loop",
+		waist="Null Belt",
+		left_ear="Crep. Earring",
+		right_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
+		left_ring="Chirich Ring +1",
 		right_ring="Moonlight Ring",
-		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}}}
+		back="Null Shawl",}
 		
 	sets.precast.WS['Swift Blade'] = {
 		ammo="Aurgelmir Orb",
@@ -473,7 +530,7 @@ function init_gear_sets()
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Rep. Plat. Medal",
 		waist="Sailfi Belt +1",
-		left_ear="Mache Earring +1",
+		left_ear="Sherida Earring",
 		right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
 		left_ring="Regal Ring",
 		right_ring="Ilabrat Ring",
@@ -486,7 +543,7 @@ function init_gear_sets()
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
-		neck="Loricate Torque +1",
+		neck={name="Futhark Torque +2", priority=1},
 		waist="Orpheus's Sash",
 		left_ear="Mache Earring +1",
 		right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
@@ -518,7 +575,7 @@ function init_gear_sets()
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Rep. Plat. Medal",
 		waist="Sailfi Belt +1",
-		left_ear="Mache Earring +1",
+		left_ear="Sherida Earring",
 		right_ear={ name="Moonshade Earring", augments={'Attack+4','TP Bonus +250',}},
 		left_ring="Regal Ring",
 		right_ring="Ilabrat Ring",
@@ -531,8 +588,8 @@ function init_gear_sets()
 		hands="Erilaz Gauntlets +3",
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
-		neck="Futhark Torque +2",
-		waist="Kentarch Belt +1",
+		neck="Null Loop",
+		waist="Null Belt",
 		left_ear="Mache Earring +1",
 		right_ear={ name="Odnowa Earring +1", priority=1},
 		left_ring="Defending Ring",
@@ -544,15 +601,15 @@ function init_gear_sets()
 		head="Erilaz Galea +3",
 		body="Erilaz Surcoat +3",
 		hands="Erilaz Gauntlets +3",
-		legs="Eri. Leg Guards +3",	
+		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
-		neck="Futhark Torque +2",
-		waist="Kentarch Belt +1",
+		neck="Null Loop",
+		waist="Null Belt",
 		left_ear="Crep. Earring",
-		right_ear={ name="Odnowa Earring +1", priority=1},
+		right_ear={ name="Odnowa Earring +1", augments={'Path: A',}},
 		left_ring="Chirich Ring +1",
-		right_ring={name="Moonlight Ring", priority=2},
-		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}}}
+		right_ring="Moonlight Ring",
+		back="Null Shawl",}
 		
 	sets.precast.WS['Decimation'] = {
 		ammo="Aurgelmir Orb",
@@ -591,9 +648,9 @@ function init_gear_sets()
     sets.midcast['Enhancing Magic'] = {
 		ammo="Staunch Tathlum +1",
 		head="Erilaz Galea +3", 
-		body="Nyame Mail",
-		hands="Regal Gauntlets",
-		legs="Futhark Trousers +3", 
+		body={name="Adamantite Armor", priority=4},
+		hands={name="Regal Gauntlets", priority=3},
+		legs="Futhark Trousers +4", 
 		feet="Erilaz Greaves +3", 
 	    neck="Futhark Torque +2", 
 		waist="Engraved Belt", 		
@@ -602,10 +659,27 @@ function init_gear_sets()
 		left_ring="Defending Ring",
 		right_ring={name="Moonlight Ring", priority=2},
 		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Parrying rate+5%',}},}
+
+    sets.midcast['Aquaveil'] = {
+		ammo="Staunch Tathlum +1",
+		head="Erilaz Galea +3", 
+		body={name="Adamantite Armor", priority=4},
+		hands={name="Regal Gauntlets", priority=3},
+		legs="Futhark Trousers +4", 
+		feet="Erilaz Greaves +3", 
+		neck={name="Futhark Torque +2", priority=1},
+		waist="Engraved Belt", 		
+		left_ear="Etiolation Earring", 
+		right_ear={ name="Odnowa Earring +1", priority=5},
+		left_ring="Defending Ring",
+		right_ring={name="Moonlight Ring", priority=2},
+		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Parrying rate+5%',}},}
+		
+    sets.midcast['Aquaveil'].sird = sets.Sird
 		
     sets.midcast['Phalanx'] =  {
 		ammo="Staunch Tathlum +1",
-		head={ name="Fu. Bandeau +3", augments={'Enhances "Battuta" effect',}},
+		head={ name="Fu. Bandeau +4", augments={'Enhances "Battuta" effect',}},
 		body={ name="Herculean Vest", augments={'MND+2','Pet: INT+4','Phalanx +4','Mag. Acc.+3 "Mag.Atk.Bns."+3',}},
 		hands={ name="Herculean Gloves", augments={'Rng.Acc.+21','Pet: "Subtle Blow"+4','Phalanx +5','Accuracy+10 Attack+10',}},
 		legs={ name="Herculean Trousers", augments={'Pet: DEX+3','Pet: INT+6','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10',}},
@@ -619,19 +693,26 @@ function init_gear_sets()
 		back={ name="Ogma's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},}		
     
 	sets.midcast['Regen IV'] = set_combine(sets.idle.VITDefense, {
-		head="Runeist Bandeau +3", 
-		body={ name="Nyame Mail", augments={'Path: B',}},	
-		hands="Regal Gauntlets", 
-		legs="Futhark Trousers +3", 
+		ammo="Staunch Tathlum +1",
+		head="Runeist Bandeau +4",
+		body={name="Adamantite Armor", priority=4},
+		hands={name="Regal Gauntlets", priority=3},
+		legs={ name="Futhark Trousers +4", augments={'Enhances "Inspire" effect',}},
+		feet="Erilaz Greaves +3",
 		neck="Sacro Gorget",
 		waist="Sroda Belt",
-		right_ear="Erilaz Earring +1",})
-    
+		left_ear="Etiolation Earring",
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Defending Ring",
+		right_ring={ name="Gelatinous Ring +1", priority=2},
+		back={ name="Ogma's Cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},})
+		
 	sets.midcast['Stoneskin'] = set_combine(sets.idle.VITDefense, {
-		head="Runeist Bandeau +3", 
-		body={ name="Nyame Mail", augments={'Path: B',}},		
-		legs="Futhark Trousers +3", 
-		hands="Regal Gauntlets", 
+		head="Runeist Bandeau +4", 
+		body={name="Adamantite Armor", priority=4},
+		legs="Futhark Trousers +4", 
+		feet="Erilaz Greaves +3",
+		hands={name="Regal Gauntlets", priority=3},
 		neck="Futhark Torque +2",
 		waist="Siegel Sash"})
 	
@@ -639,41 +720,48 @@ function init_gear_sets()
 	
 	sets.midcast['Stun'] = sets.enmity
 	
-	sets.midcast['Stun'].Macc = sets.midcast['Blind']	
+	sets.midcast['Stun'].sird = sets.midcast['Blind']	
 	
 	sets.midcast['Foil'] = set_combine(sets.enmity, {
 		head="Erilaz Galea +3",})
 		
 	sets.midcast['Blind'] = {
-		ammo="Pemphredo Tathlum",
-		head="Erilaz Galea +3",
-		body="Erilaz Surcoat +3",
-		hands="Agwu's Gages",
+		ammo="Yamarang",
+		head="Runeist Bandeau +4",
+		body="Runeist Coat +4",
+		hands="Erilaz Gauntlets +3",
 		legs="Eri. Leg Guards +3",
-		feet="Erilaz Greaves +3",
+		feet="Runeist Boots +4",
 		neck="Null Loop",
 		waist="Null Belt",
-		left_ear="Gwati Earring",
-		right_ear="Digni. Earring",
-		left_ring="Stikini Ring",
-		right_ring="Stikini Ring +1",
-		back="Null Shawl"}
+		left_ear={name="Tuisto Earring", priority=3},
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Chirich Ring +1",
+		right_ring={name="Regal Ring", priority=2},
+		back="Null Shawl",}		
 		
 	sets.midcast['Refresh'] = set_combine(sets.idle.VITDefense, {
 		head="Erilaz Galea +3", 
 		body={ name="Nyame Mail", augments={'Path: B',}},		
-		hands="Regal Gauntlets", 
-		legs="Futhark Trousers +3", 
+		hands={name="Regal Gauntlets", priority=3},
+		legs="Futhark Trousers +4", 
+		waist="Gishdubar Sash"})
+		
+	sets.midcast['Auspice'] = set_combine(sets.idle.VITDefense, {
+		head="Erilaz Galea +3", 
+		body={name="Adamantite Armor", priority=4},
+		hands={name="Regal Gauntlets", priority=3},
+		legs="Futhark Trousers +4", 
 		waist="Gishdubar Sash"})
     
 	sets.midcast['Temper'] = {
 		ammo="Staunch Tathlum +1",
 		head="Erilaz Galea +3",
-		body={name="Runeist Coat +3", priority=3},
-		hands="Runeist Mitons +3",
-		legs={ name="Carmine Cuisses +1", augments={'Accuracy+12','DEX+12','MND+20',}},
+		body={name="Adamantite Armor", priority=4},
+		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+		legs={ name="Futhark Trousers +4", augments={'Enhances "Inspire" effect',}},
 		feet="Erilaz Greaves +3",
-		neck="Enhancing Torque",
+		neck="Melic Torque",
 		waist="Engraved Belt",
 		left_ear="Etiolation Earring",
 		right_ear={ name="Odnowa Earring +1", priority=2},
@@ -682,43 +770,56 @@ function init_gear_sets()
 		back={name="Moonlight Cape", priority=1},}
 		
 	sets.midcast['Shell V'] = set_combine(sets.idle.VITDefense, {
-		body={ name="Nyame Mail", augments={'Path: B',}},		
+		body={name="Adamantite Armor", priority=4},
 		head="Erilaz Galea +3", 
-		legs="Futhark Trousers +3", 
+		legs="Futhark Trousers +4", 
 		hands="Regal Gauntlets"})
 		
-	sets.midcast['Barfire'] = sets.EnhancingSkill
+	sets.midcast['Barfire'] = {
+		ammo="Staunch Tathlum +1",
+		head="Erilaz Galea +3",
+		body={name="Adamantite Armor", priority=4},
+		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+		legs={ name="Futhark Trousers +4", augments={'Enhances "Inspire" effect',}},
+		feet="Erilaz Greaves +3",
+		neck={ name="Futhark Torque +2", augments={'Path: A',}},
+		waist="Null Belt",
+		left_ear="Etiolation Earring",
+		right_ear="Mimir Earring",
+		left_ring="Defending Ring",
+		right_ring="Shadow Ring",
+		back={name="Moonlight Cape", priority=1},}
 		
-	sets.midcast['Barblizzard'] = sets.EnhancingSkill
+	sets.midcast['Barblizzard'] = sets.midcast['Barfire']
 		
-	sets.midcast['Baraero'] = sets.EnhancingSkill
+	sets.midcast['Baraero'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barstone'] = sets.EnhancingSkill
+	sets.midcast['Barstone'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barthunder'] = sets.EnhancingSkill
+	sets.midcast['Barthunder'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barwater'] = sets.EnhancingSkill
+	sets.midcast['Barwater'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barpoison'] = sets.EnhancingSkill
+	sets.midcast['Barpoison'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barparalyze'] = sets.EnhancingSkill
+	sets.midcast['Barparalyze'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barsleep'] = sets.EnhancingSkill
+	sets.midcast['Barsleep'] = sets.midcast['Barfire']
 		
-	sets.midcast['Baramnesia'] = sets.EnhancingSkill
+	sets.midcast['Baramnesia'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barblind'] = sets.EnhancingSkill
+	sets.midcast['Barblind'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barpetrify'] = sets.EnhancingSkill
+	sets.midcast['Barpetrify'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barvirus'] = sets.EnhancingSkill
+	sets.midcast['Barvirus'] = sets.midcast['Barfire']
 		
-	sets.midcast['Barsilence'] = sets.EnhancingSkill
+	sets.midcast['Barsilence'] = sets.midcast['Barfire']
 		
 	sets.midcast['Poisonga'] = {
 		ammo="Staunch Tathlum +1",
 		head={ name="Nyame Helm", augments={'Path: B',}},
-		body={ name="Nyame Mail", augments={'Path: B',}},
+		body={name="Adamantite Armor", priority=4},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
@@ -743,6 +844,10 @@ function init_gear_sets()
 	sets.midcast['Healing Breeze'] = sets.Cures
 	
 	sets.midcast['Magic Fruit'] = sets.Cures
+	
+	sets.midcast['Curaga II'] = sets.Cures
+	
+	sets.midcast['Curaga III'] = sets.Cures
 ----------------------------------------------------	
     sets.midcast['Cure III'].sird = sets.Sird	
 	
@@ -757,7 +862,7 @@ function init_gear_sets()
 	sets.midcast['Refueling'] = {
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
-		body={ name="Nyame Mail", augments={'Path: B',}},
+		body={name="Adamantite Armor", priority=4},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
@@ -772,13 +877,13 @@ function init_gear_sets()
 	sets.midcast['Cocoon'] = {
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
-		body={ name="Nyame Mail", augments={'Path: B',}},
+		body={name="Adamantite Armor", priority=4},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
 		neck="Loricate Torque +1",
 		waist="Engraved Belt",
-		left_ear={name="Tuisto Earring", priority=2},
+		left_ear={name="Tuisto Earring", priority=3},
 		right_ear={ name="Odnowa Earring +1", priority=1},
 		left_ring="Paguroidea Ring",
 		right_ring={ name="Gelatinous Ring +1", priority=2},
@@ -802,47 +907,95 @@ function init_gear_sets()
 	
 	sets.midcast['Stinking Gas'].sird = sets.Sird
 	
+	sets.midcast['Sandspin'] = sets.enmity
+	
+	sets.midcast['Sandspin'].sird = sets.Sird
+	
 	sets.midcast['Poisonga'].sird = sets.Sird
 	
-	sets.midcast['Curing Waltz III'] = sets.Cures
+	sets.precast.JA['Curing Waltz III'] = sets.Cures
 
-	sets.midcast['Curing Waltz II'] = sets.Cures
+	sets.precast.JA['Curing Waltz II'] = sets.Cures
 
-	sets.midcast['Curing Waltz'] = sets.Cures
+	sets.precast.JA['Curing Waltz'] = sets.Cures
 		
-	sets.midcast['Divine Waltz'] = sets.Cures
+	sets.precast.JA['Divine Waltz'] = sets.Cures
 	
-	
-	--1434 acc w/o food
+	sets.midcast['Frightful Roar'] = {
+		ammo="Yamarang",
+		head="Runeist Bandeau +4",
+		body="Runeist Coat +4",
+		hands="Erilaz Gauntlets +3",
+		legs="Eri. Leg Guards +3",
+		feet="Erilaz Greaves +3",
+		neck="Null Loop",
+		waist="Plat. Mog. Belt",
+		left_ear={name="Tuisto Earring", priority=3},
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Defending Ring",
+		right_ring={name="Regal Ring", priority=2},
+		back="Null Shawl",}		
+
+	sets.midcast['Silence'] = {
+		ammo="Yamarang",
+		head="Runeist Bandeau +4",
+		body="Runeist Coat +4",
+		hands="Erilaz Gauntlets +3",
+		legs="Eri. Leg Guards +3",
+		feet="Runeist Boots +4",
+		neck="Null Loop",
+		waist="Null Belt",
+		left_ear={name="Tuisto Earring", priority=3},
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Chirich Ring +1",
+		right_ring={name="Regal Ring", priority=2},
+		back="Null Shawl",}		
+
+	sets.midcast['Paralyze'] = {
+		ammo="Yamarang",
+		head="Runeist Bandeau +4",
+		body="Runeist Coat +4",
+		hands="Erilaz Gauntlets +3",
+		legs="Eri. Leg Guards +3",
+		feet="Runeist Boots +4",
+		neck="Null Loop",
+		waist="Null Belt",
+		left_ear={name="Tuisto Earring", priority=3},
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Chirich Ring +1",
+		right_ring={name="Regal Ring", priority=2},
+		back="Null Shawl",}		
+
+	--1585 acc w/o food
 	sets.precast.JA['Box Step'] = {
 		ammo="Yamarang",
-		head="Rune. Bandeau +3",
-		body="Runeist Coat +3",
-		hands="Runeist Mitons +3",
-		legs="Rune. Trousers +3",
-		feet="Runeist Boots +3",
-		neck="Futhark Torque +2",
-		waist="Kentarch Belt +1",
-		left_ear="Mache Earring +1",
-		right_ear={ name="Odnowa Earring +1", priority=1},
-		left_ring="Defending Ring",
-		right_ring={name="Moonlight Ring", priority=2},
-		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%',}},}
+		head="Runeist Bandeau +4",
+		body="Runeist Coat +4",
+		hands="Erilaz Gauntlets +3",
+		legs="Eri. Leg Guards +3",
+		feet="Runeist Boots +4",
+		neck="Null Loop",
+		waist="Null Belt",
+		left_ear={name="Tuisto Earring", priority=3},
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Chirich Ring +1",
+		right_ring={name="Regal Ring", priority=2},
+		back="Null Shawl",}		
 		
 	sets.midcast['Stutter Step'] = {
 		ammo="Yamarang",
-		head="Rune. Bandeau +3",
-		body="Runeist Coat +3",
-		hands="Runeist Mitons +3",
-		legs="Rune. Trousers +3",
-		feet="Runeist Boots +3",
-		neck="Futhark Torque +2",
-		waist="Kentarch Belt +1",
-		left_ear="Mache Earring +1",
-		right_ear={ name="Odnowa Earring +1", priority=1},
-		left_ring="Defending Ring",
-		right_ring={name="Moonlight Ring", priority=2},
-		back={ name="Ogma's cape", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%',}},}
+		head="Runeist Bandeau +4",
+		body="Runeist Coat +4",
+		hands="Erilaz Gauntlets +3",
+		legs="Eri. Leg Guards +3",
+		feet="Runeist Boots +4",
+		neck="Null Loop",
+		waist="Null Belt",
+		left_ear={name="Tuisto Earring", priority=3},
+		right_ear={ name="Erilaz Earring +1", augments={'System: 1 ID: 1676 Val: 0','Accuracy+15','Mag. Acc.+15','Damage taken-5%',}},
+		left_ring="Chirich Ring +1",
+		right_ring={name="Regal Ring", priority=2},
+		back="Null Shawl",}		
 
 	--------------------------------------
 	-- Idle/resting/defense/etc sets -----
@@ -850,7 +1003,7 @@ function init_gear_sets()
 	sets.idle.HPDT = {
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
-		body={name="Runeist Coat +3", priority=3},
+		body={name="Runeist Coat +4", priority=3},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
@@ -865,7 +1018,7 @@ function init_gear_sets()
 	sets.idle.Refresh = {
 		ammo="Homiliary",
 		head="Null Masque",
-		body={name="Runeist Coat +3", priority=5},
+		body={name="Runeist Coat +4", priority=5},
 		hands={name="Regal Gauntlets",priority=3},
 		legs={name="Herculean Trousers", augments={'"Blood Boon"+8','"Drain" and "Aspir" potency +1','"Refresh"+2',}},
 		feet="Erilaz Greaves +3",
@@ -880,7 +1033,7 @@ function init_gear_sets()
     sets.idle.VITDefense = {
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
-		body={ name="Nyame Mail", augments={'Path: B',}},
+		body={name="Adamantite Armor", priority=4},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet={ name="Nyame Sollerets", augments={'Path: B',}},
@@ -891,10 +1044,25 @@ function init_gear_sets()
 		left_ring="Paguroidea Ring",
 		right_ring={ name="Gelatinous Ring +1", priority=2},
 		back={ name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','DEF+50',}},}	
-		          
+		
+    sets.idle.Aminon = {
+		ammo="Vanir Battery",
+		head="Null Masque",
+		body="Adamantite Armor",
+		hands="Erilaz Gauntlets +3",
+		legs="Eri. Leg Guards +3",
+		feet="Erilaz Greaves +3",
+		neck={ name="Futhark Torque +2", augments={'Path: A',}},
+		waist="Null Belt",
+		left_ear={name="Etiolation Earring", priority=3},
+		right_ear={ name="Odnowa Earring +1", priority=1},
+		left_ring="Vexer Ring +1",
+		right_ring={ name="Gelatinous Ring +1", priority=2},
+		back={ name="Ogma's Cape", augments={'VIT+20','Eva.+20 /Mag. Eva.+20','DEF+50',}},}	
+		
 	sets.idle.Phalanx = {
 		ammo="Staunch Tathlum +1",
-		head={ name="Fu. Bandeau +3", augments={'Enhances "Battuta" effect',}},
+		head={ name="Fu. Bandeau +4", augments={'Enhances "Battuta" effect',}},
 		body={ name="Herculean Vest", augments={'MND+2','Pet: INT+4','Phalanx +4','Mag. Acc.+3 "Mag.Atk.Bns."+3',}},
 		hands={ name="Herculean Gloves", augments={'Rng.Acc.+21','Pet: "Subtle Blow"+4','Phalanx +5','Accuracy+10 Attack+10',}},
 		legs={ name="Herculean Trousers", augments={'Pet: DEX+3','Pet: INT+6','Phalanx +4','Mag. Acc.+10 "Mag.Atk.Bns."+10',}},
@@ -917,24 +1085,24 @@ function init_gear_sets()
 		head="Adhemar Bonnet +1",
 		body={ name="Adhemar Jacket +1", augments={'STR+12','DEX+12','Attack+20',}},
 		hands={ name="Adhemar Wrist. +1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-		--legs="Eri. Leg Guards +3",
+		--legs="Eri. Leg Guards +3", -- DT/High acc swap piece
 		legs={ name="Samnuha Tights", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-		--feet="Erilaz Greaves +3",
+		--feet="Erilaz Greaves +3", -- DT/High acc swap piece
 		feet={ name="Herculean Boots", augments={'Attack+5','Crit.hit rate+1','Quadruple Attack +3','Accuracy+10 Attack+10','Mag. Acc.+5 "Mag.Atk.Bns."+5',}},
 		neck="Anu Torque",
 		waist="Kentarch Belt +1",
 		left_ear="Telos Earring",
 		right_ear="Sherida Earring",
-		left_ring="Defending Ring",
-		right_ring="Moonlight Ring",
-		back={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},}
+		left_ring="Chirich Ring +1",
+		right_ring="Ilabrat Ring",
+		back="Null Shawl"}
 		
 	sets.engaged.Hybrid = {
 		ammo="Aurgelmir Orb",
 		head="Nyame Helm",
 		body="Nyame Mail",
 		hands="Turms Mittens +1",
-		legs="Meg. Chausses +2",
+		legs={ name="Nyame Flanchard", augments={'Path: B',}},
 		feet="Nyame Sollerets",
 		neck="Anu Torque",
 		waist="Kentarch Belt +1",
@@ -942,24 +1110,24 @@ function init_gear_sets()
 		right_ear="Sherida Earring",
 		left_ring="Chirich Ring +1",
 		right_ring="Moonlight Ring",
-		back={ name="Ogma's cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},}
+		back="Null Shawl"}
 
-	sets.engaged.DTParry = { --Wing of War DT Parry set
+	sets.engaged.DTParry = { 
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
-		body="Erilaz Surcoat +3",
+		body={name="Adamantite Armor", priority=3},
 		hands="Turms Mittens +1",
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
 		neck="Futhark Torque +2",
-	    waist="Plat. Mog. Belt",
-		left_ear={name="Tuisto Earring", priority=3},
+		waist={name="Plat. Mog. Belt", priority=4},
+		left_ear={name="Etiolation Earring", priority=2},
 		right_ear="Eabani Earring",
 		left_ring="Gurebu's Ring",
-		right_ring={name="Moonlight Ring", priority=2},
+		right_ring={name="Shadow Ring", priority=1},
 		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Parrying rate+5%',}},}
 		
-	--[[Normal DT Parry set: 
+	--[[Normal parry set:  = {
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
 		body="Nyame Mail",
@@ -974,11 +1142,10 @@ function init_gear_sets()
 		right_ring={name="Moonlight Ring", priority=2},
 		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Enmity+10','Parrying rate+5%',}},}
 		]]
-		
-	--[[ August Master trial/Arebati V25 tank set:
+	--[[ August/Arebati tank set: 
 		ammo="Staunch Tathlum +1",
 		head="Null Masque",
-		body={name="Runeist Coat +3", priority=5},
+		body={name="Runeist Coat +4", priority=5},
 		hands={ name="Nyame Gauntlets", augments={'Path: B',}},
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
@@ -990,24 +1157,37 @@ function init_gear_sets()
 		right_ring={name="Moonlight Ring", priority=2},
 		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},}
 	]]	
-		
 	sets.engaged.MEva = {
 		ammo="Staunch Tathlum +1",
-		head={ name="Nyame Helm", augments={'Path: B',}},
-		body={name="Runeist Coat +3", priority=1},
-		--hands={ name="Nyame Gauntlets", augments={'Path: B',}},
+		head="Null Masque",
+		body={name="Runeist Coat +4", priority=5},
+		--hands={ name="Nyame Gauntlets", augments={'Path: B',}}, --Swap this in if the enemy cannot be parried.
 		hands="Turms Mittens +1",
 		legs="Eri. Leg Guards +3",
 		feet="Erilaz Greaves +3",
-		neck={ name="Futhark Torque +2", augments={'Path: A',}},
-		--waist={name="Plat. Mog. Belt", priority=2},
-		waist="Engraved Belt",
-		left_ear={name="Tuisto Earring", priority=4},
-		right_ear="Erilaz Earring +1",
+		neck="Futhark Torque +2",
+		waist={name="Plat. Mog. Belt", priority=4},
+		left_ear="Etiolation Earring",
+		right_ear="Eabani Earring",
 		left_ring="Gurebu's Ring",
-		right_ring={name="Moonlight Ring", priority=3},
+		right_ring={name="Moonlight Ring", priority=2},
 		back={ name="Ogma's cape", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}},}
 	  
+	sets.engaged.Evasion = { --1283 Base eva for ML 50~
+		sub="Kupayopl",
+		ammo="Yamarang",
+		head="Null Masque",
+		body="Adamantite Armor",
+		hands="Turms Mittens +1",
+		legs="Eri. Leg Guards +3",
+		feet="Erilaz Greaves +3",
+		neck="Bathy Choker +1",
+		waist="Null Belt",
+		left_ear="Etiolation Earring",
+		right_ear="Eabani Earring",
+		left_ring={ name="Gelatinous Ring +1", augments={'Path: A',}},
+		right_ring="Shadow Ring",
+		back="Null Shawl",}
 end
 
 ------------------------------------------------------------------
@@ -1016,7 +1196,6 @@ end
 
 -- Select default macro book on initial load or subjob change.
 function select_default_macro_book()
-	-- Default macro set/book
 	if player.main_job == 'RUN' then
 		set_macro_page(1, 20)
 	end
@@ -1098,6 +1277,14 @@ function job_precast(spell, action, spellMap, eventArgs)
     end
 end
 
+function job_post_precast(spell, action, spellMap, eventArgs)	
+    if spell.type:lower() == 'weaponskill' and player.tp < 2750 then
+        equip({right_ear="Moonshade Earring"})
+    end
+	if spell.english:sub(1,8) == 'Stoneski' then send_command('@wait1; input //cancel Stoneskin')
+	end
+end
+
 function job_aftercast(spell, action, spellMap, eventArgs)
 	equip(sets[state.WeaponSet.current])
 	
@@ -1154,9 +1341,9 @@ function job_update(cmdParams, eventArgs)
 end
 
 function set_lockstyle()
-    send_command('wait 5; input /lockstyleset ' .. lockstyleset)
-end
-
-function job_update(cmdParams, eventArgs)
-    equip(sets[state.WeaponSet.current])
+	if player.sub_job == 'BLU' then
+		send_command('wait 5; input /lockstyleset ' .. lockstyleset)
+	elseif player.sub_job == 'DRK' then
+		send_command('wait 5; input /lockstyleset ' .. lockstyleset)
+	end	
 end
